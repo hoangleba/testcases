@@ -1,0 +1,236 @@
+var yomediaId_fe056ff17b79423db1e36ec3ca9f7631 = 'yomedia-display-widget-native-ad-fe056ff17b79423db1e36ec3ca9f7631';
+var template_fe056ff17b79423db1e36ec3ca9f7631 = '<article data-aid="21767656">     <figure>         <a onclick="[yo_fn_click]" href="javascript:void(0)">             <img src="[yo_mthumbnail]" alt="Phát hoảng clip rửa lòng lợn bằng chân tại quán lòng nức tiếng HN">         </a>     </figure>     <header>         <h2><a onclick="[yo_fn_click]" href="javascript:void(0)" title="Phát hoảng clip rửa lòng lợn bằng chân tại quán lòng nức tiếng HN">Phát hoảng clip rửa lòng lợn bằng chân tại quán lòng nức tiếng HN</a></h2>         <p class="meta">             <a href="#">Dân Việt</a>             <time class="friendly" datetime="2017-03-15T08:48:00+07:00">1 giờ</time>                 <span>     <i class="spr video-icon"></i>     <a onclick="[yo_fn_click]" href="javascript:void(0)" title="Phát hoảng clip rửa lòng lợn bằng chân tại quán lòng nức tiếng HN" class="spr spr-cache cache">[yo_title]</a>     </span>         </p>     </header> </article>';
+var positionInsert_fe056ff17b79423db1e36ec3ca9f7631 = 'random';
+var positionType_fe056ff17b79423db1e36ec3ca9f7631 = 'id';
+var positionName_fe056ff17b79423db1e36ec3ca9f7631 = 'DIV_NATIVE_AD';
+var positionIndex_fe056ff17b79423db1e36ec3ca9f7631 = '';
+
+function showBannerYomedia_fe056ff17b79423db1e36ec3ca9f7631(s) {
+    if (document.getElementById(yomediaId_fe056ff17b79423db1e36ec3ca9f7631) || positionName_fe056ff17b79423db1e36ec3ca9f7631 === '') {
+        return false;
+    }
+    var mainContain;
+    if (positionInsert_fe056ff17b79423db1e36ec3ca9f7631 === '') {
+        positionInsert_fe056ff17b79423db1e36ec3ca9f7631 = 'random';
+    }
+    if (positionType_fe056ff17b79423db1e36ec3ca9f7631 === '') {
+        positionType_fe056ff17b79423db1e36ec3ca9f7631 = 'id';
+    }
+    if (positionType_fe056ff17b79423db1e36ec3ca9f7631 === 'class') {
+        if (positionIndex_fe056ff17b79423db1e36ec3ca9f7631 === '') {
+            positionIndex_fe056ff17b79423db1e36ec3ca9f7631 = 0;
+        } else {
+            positionIndex_fe056ff17b79423db1e36ec3ca9f7631 = parseInt(positionIndex_fe056ff17b79423db1e36ec3ca9f7631);
+        }        
+        mainContain = document.getElementsByClassName(positionName_fe056ff17b79423db1e36ec3ca9f7631)[positionIndex_fe056ff17b79423db1e36ec3ca9f7631];
+    } else {
+        mainContain = document.getElementById(positionName_fe056ff17b79423db1e36ec3ca9f7631);
+    }
+    if (!mainContain) {
+        return false;
+    }
+    template_fe056ff17b79423db1e36ec3ca9f7631 = replaceMacroYomedia_fe056ff17b79423db1e36ec3ca9f7631(template_fe056ff17b79423db1e36ec3ca9f7631);
+
+    var nodeTmp = document.createElement("DIV");
+    nodeTmp.innerHTML = template_fe056ff17b79423db1e36ec3ca9f7631;
+    var nodeBanner = nodeTmp.firstChild;
+    switch (positionInsert_fe056ff17b79423db1e36ec3ca9f7631) {
+        case 'before':
+            mainContain.parentNode.insertBefore(nodeBanner, mainContain);
+            break;
+        case 'first_child':
+            var firstChild = mainContain.firstChild;
+            if (firstChild) {
+                mainContain.insertBefore(nodeBanner, firstChild);
+            } else {
+                mainContain.appendChild(nodeBanner);
+            }
+            break;
+        case 'middle_child':
+            var childNodes = mainContain.childNodes;
+            if ( childNodes.length > 0) {
+                var p = 0;
+                for (var i = 0; i < childNodes.length; i++) {
+                    if (childNodes[i].clientHeight > 0) {
+                        p = p + childNodes[i].clientHeight;
+                    }
+                    if (p >= (mainContain.clientHeight / 2)) {
+                        if (typeof(mainContain.childNodes[i + 1]) != 'undefined') {
+                            var eleToInsert = i + 1;
+                        } else {
+                            var eleToInsert = i;
+                        }            
+                        mainContain.childNodes[eleToInsert].parentNode.insertBefore(nodeBanner, mainContain.childNodes[eleToInsert].nextSibling);
+                        break;
+                    }
+                }
+            } else {
+                mainContain.appendChild(nodeBanner);
+            }
+            break;
+        case 'last_child':
+            mainContain.appendChild(nodeBanner);
+            break;
+        case 'after':
+            var nextNode = mainContain.nextSibling;
+            if (nextNode) {
+                nextNode.parentNode.insertBefore(nodeBanner, nextNode);
+            } else {
+                mainContain.parentNode.appendChild(nodeBanner);
+            }
+            break;
+        case 'random':
+            var childNodes = mainContain.childNodes;
+            if ( childNodes.length > 0) {
+                var randomIndex= Math.floor(Math.random() * childNodes.length);
+                mainContain.insertBefore(nodeBanner, mainContain.childNodes[randomIndex]);
+            } else {
+                mainContain.appendChild(nodeBanner);
+            }
+            break;
+        default:
+            return false;
+            break;
+    }
+    if (window!=window.top) {
+        parent.document.addEventListener("scroll", function(){
+            viewableBannerYomedia_fe056ff17b79423db1e36ec3ca9f7631(document.getElementById(yomediaId_fe056ff17b79423db1e36ec3ca9f7631));
+        }, false);
+    }else{
+        document.addEventListener("scroll", function(){
+            viewableBannerYomedia_fe056ff17b79423db1e36ec3ca9f7631(document.getElementById(yomediaId_fe056ff17b79423db1e36ec3ca9f7631));
+        }, false);
+    }
+    impressionTrackingYomedia_fe056ff17b79423db1e36ec3ca9f7631();
+}
+
+function replaceMacroYomedia_fe056ff17b79423db1e36ec3ca9f7631(template) {
+    if (template.indexOf('[yo_title]') >= 0) {
+        template = template.replace(/\[yo_title\]/g, 'Pro Theatre Series - Hoàn Mỹ Trong Từng Đường Nét');
+    }
+    if (template.indexOf('[yo_product_name]') >= 0) {
+        template = template.replace(/\[yo_product_name\]/g, 'Toshiba');
+    }
+    if (template.indexOf('[yo_short_intro]') >= 0) {
+        template = template.replace(/\[yo_short_intro\]/g, 'Pro Theatre Series - Hoàn Mỹ Trong Từng Đường Nét');
+    }
+    if (template.indexOf('[yo_content]') >= 0) {
+        template = template.replace(/\[yo_content\]/g, 'Pro Theatre Series - Hoàn Mỹ Trong Từng Đường Nét');
+    }
+    if (template.indexOf('[yo_sthumbnail]') >= 0) {
+        template = template.replace(/\[yo_sthumbnail\]/g, 'http://media_obj.9730a73b.cdnviet.com/2017/banner-testing/native-in-feed/images/hinh.jpg');
+    }
+    if (template.indexOf('[yo_mthumbnail]') >= 0) {
+        template = template.replace(/\[yo_mthumbnail\]/g, 'http://media_obj.9730a73b.cdnviet.com/2017/banner-testing/native-in-feed/images/hinh.jpg');
+    }
+    if (template.indexOf('[yo_lthumbnail]') >= 0) {
+        template = template.replace(/\[yo_lthumbnail\]/g, 'http://media_obj.9730a73b.cdnviet.com/2017/banner-testing/native-in-feed/images/hinh.jpg');
+    }
+    if (template.indexOf('[yo_click]') >= 0) {
+        var clickTag = getClickTagYomedia_fe056ff17b79423db1e36ec3ca9f7631();
+        template = template.replace(/\[yo_click\]/g, clickTag);
+    }
+    if (template.indexOf('[yo_fn_click]') >= 0) {
+        template = template.replace(/\[yo_fn_click\]/g, 'clickTrackingYomedia_fe056ff17b79423db1e36ec3ca9f7631();');
+    }
+    if (template.indexOf('[yo_pid]') >= 0) {
+        template = template.replace(/\[yo_pid\]/g, 'fe056ff17b79423db1e36ec3ca9f7631');
+    }
+    if (template.indexOf('[yo_aid]') >= 0) {
+        template = template.replace(/\[yo_aid\]/g, '6fd4b959c7af484d87128af62209139b');
+    }
+    return template;
+}
+
+showBannerYomedia_fe056ff17b79423db1e36ec3ca9f7631(1);
+function impressionTrackingYomedia_fe056ff17b79423db1e36ec3ca9f7631() {
+    avlHelperModule.embedTracking('http://tracking.yomedia.vn/display?evt=impression&pid=fe056ff17b79423db1e36ec3ca9f7631&aid=6fd4b959c7af484d87128af62209139b&r=0&ord=' + Date.now());
+    if (typeof _YoImp != 'undefined' && avlHelperModule.validateUrl(_YoImp)) {
+        avlHelperModule.embedTracking(_YoImp);
+    }
+}
+
+function viewableTrackingYomedia_fe056ff17b79423db1e36ec3ca9f7631() {
+    avlHelperModule.embedTracking('http://tracking.yomedia.vn/display?evt=viewable&pid=fe056ff17b79423db1e36ec3ca9f7631&aid=6fd4b959c7af484d87128af62209139b&r=false&ord=1502596781043' + Date.now());
+}
+
+function clickTrackingYomedia_fe056ff17b79423db1e36ec3ca9f7631() {
+    avlHelperModule.embedTracking('http://tracking.yomedia.vn/display?evt=click&pid=fe056ff17b79423db1e36ec3ca9f7631&aid=6fd4b959c7af484d87128af62209139b&r=0&ord=' + Date.now());
+    if (typeof _YoClick != 'undefined' && avlHelperModule.validateUrl(_YoClick)) {
+        avlHelperModule.embedTracking(_YoClick);
+    }
+    var landingPage = 'http://yomedia.vn'.replace('[timestamp]',Math.floor(Date.now()));
+    var isMac = /Mac|iPhone|iPod|iPad/.test(navigator.userAgent) && /\sSafari\//.test(navigator.userAgent);
+    if (!isMac) {
+        window.open(landingPage, '_blank');
+    }
+}
+
+function engagementTrackingYomedia_fe056ff17b79423db1e36ec3ca9f7631(event) {
+    if (typeof event !== 'undefined') {
+        var urlTracking = 'http://tracking.yomedia.vn/display?evt=[yo_engagement]&pid=fe056ff17b79423db1e36ec3ca9f7631&aid=6fd4b959c7af484d87128af62209139b&r=0&ord=' + Date.now();
+        urlTracking = urlTracking.replace('[yo_engagement]', event);
+        avlHelperModule.embedTracking(urlTracking);
+    }
+}
+
+function getClickTagYomedia_fe056ff17b79423db1e36ec3ca9f7631() {
+    var landingPage = 'http://yomedia.vn'.replace('[timestamp]',Math.floor(Date.now()));
+    return landingPage;
+}
+function addAnEventListener_fe056ff17b79423db1e36ec3ca9f7631(obj,evt,func){
+    if ('addEventListener' in obj){
+        obj.addEventListener(evt,func, false);
+    } else if ('attachEvent' in obj){//IE
+        obj.attachEvent('on'+evt,func);
+    }
+}
+
+function iFrameListener_fe056ff17b79423db1e36ec3ca9f7631(event){
+    try {
+        fn_fe056ff17b79423db1e36ec3ca9f7631 = event.data;
+        if ('string' == typeof fn_fe056ff17b79423db1e36ec3ca9f7631 &&  fn_fe056ff17b79423db1e36ec3ca9f7631.toLowerCase().indexOf('yomedia') >= 0 && (fn_fe056ff17b79423db1e36ec3ca9f7631.indexOf('_fe056ff17b79423db1e36ec3ca9f7631();') >= 0) || fn_fe056ff17b79423db1e36ec3ca9f7631.indexOf('TrackingYomedia();') >= 0) {
+            eval(fn_fe056ff17b79423db1e36ec3ca9f7631);
+        }
+    }
+    catch(err) {}
+}
+var fn_fe056ff17b79423db1e36ec3ca9f7631='';
+addAnEventListener_fe056ff17b79423db1e36ec3ca9f7631(window,'message',iFrameListener_fe056ff17b79423db1e36ec3ca9f7631);
+// GA  Analytics
+/*
+avlHelperModule.embedTrackingIframe("GA","{!! getAnalyticUrl() !!}analytics.html?utm_campaign=Yomedia&utm_source={!! urlencode($category_name) !!}&utm_medium={!! $publisher_domain !!}&utm_content={!! urlencode($ad_format) !!}&rd={!! str_random(40) !!}");
+*/
+
+// comScore
+<!-- Begin comScore Tag -->
+var _comscore = _comscore || [];
+_comscore.push({ c1: "8", c2: "18889311" ,c3: "2016090700000000011" });
+(function() {
+var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+el.parentNode.insertBefore(s, el);
+})();
+<!-- End comScore Tag -->
+// comScore
+<!-- Begin comScore Tag -->
+var _comscore = _comscore || [];
+_comscore.push({ c1: "8", c2: "18889311" ,c3: "2016070110000000012" });
+(function() {
+var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+el.parentNode.insertBefore(s, el);
+})();
+<!-- End comScore Tag -->
+// comScore
+<!-- Begin comScore Tag -->
+var _comscore = _comscore || [];
+_comscore.push({ c1: "8", c2: "18889311" ,c3: "2016070110000000006" });
+(function() {
+var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+el.parentNode.insertBefore(s, el);
+})();
+<!-- End comScore Tag -->
+avlHelperModule.embedTracking('http://analytics.yomedia.vn/collect?wid=ad85c58281be4b9682a42a5c9b7dd219&ord=1502596781043' + Date.now());
+avlHelperModule.embedTracking('http://tracking.yomedia.vn/request?evt=req&pid=fe056ff17b79423db1e36ec3ca9f7631&aid=6fd4b959c7af484d87128af62209139b&r=0&ord=' + Date.now());

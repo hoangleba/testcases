@@ -1,0 +1,262 @@
+var yomediaId_ffbb8125472946eb8ab21f3843c3ca36 = 'yomedia-wrapper-mobile-3d-box-ffbb8125472946eb8ab21f3843c3ca36';
+var yomediaPortraitId_ffbb8125472946eb8ab21f3843c3ca36 = 'yomedia-mobile-portrait-3d-box-ffbb8125472946eb8ab21f3843c3ca36';
+var yomediaLandscapeId_ffbb8125472946eb8ab21f3843c3ca36 = 'yomedia-mobile-landscape-3d-box-ffbb8125472946eb8ab21f3843c3ca36';
+var positionInsert_ffbb8125472946eb8ab21f3843c3ca36 = 'before';
+var positionType_ffbb8125472946eb8ab21f3843c3ca36 = 'id';
+var positionName_ffbb8125472946eb8ab21f3843c3ca36 = 'abdf';
+var positionIndex_ffbb8125472946eb8ab21f3843c3ca36 = '';
+var iOS_ffbb8125472946eb8ab21f3843c3ca36 = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+function showBannerYomedia_ffbb8125472946eb8ab21f3843c3ca36(s) {
+    if (document.getElementById(yomediaId_ffbb8125472946eb8ab21f3843c3ca36)) {
+        return false;
+    }
+    var mainContain;
+    if (positionInsert_ffbb8125472946eb8ab21f3843c3ca36 === '') {
+        positionInsert_ffbb8125472946eb8ab21f3843c3ca36 = 'last_child';
+    }
+    if (positionType_ffbb8125472946eb8ab21f3843c3ca36 === '') {
+        positionType_ffbb8125472946eb8ab21f3843c3ca36 = 'id';
+    }
+    if (positionType_ffbb8125472946eb8ab21f3843c3ca36 === 'class') {
+        if (positionIndex_ffbb8125472946eb8ab21f3843c3ca36 === '') {
+            positionIndex_ffbb8125472946eb8ab21f3843c3ca36 = 0;
+        } else {
+            positionIndex_ffbb8125472946eb8ab21f3843c3ca36 = parseInt(positionIndex_ffbb8125472946eb8ab21f3843c3ca36);
+        }
+        mainContain = document.getElementsByClassName(positionName_ffbb8125472946eb8ab21f3843c3ca36)[positionIndex_ffbb8125472946eb8ab21f3843c3ca36];        
+    } else {
+        mainContain = document.getElementById(positionName_ffbb8125472946eb8ab21f3843c3ca36);
+    }
+    if (!mainContain) {
+        mainContain = document.body;
+    }
+    var domWrapper = document.createElement('div');
+    domWrapper.setAttribute('id', yomediaId_ffbb8125472946eb8ab21f3843c3ca36);
+
+    var portraitBanner = document.createElement('iframe');
+    var clickTag = encodeURIComponent(getClickTagYomedia_ffbb8125472946eb8ab21f3843c3ca36());
+    var creative_src = 'http://media_obj.9730a73b.cdnviet.com/2017/banner-testing/3d/index.html?pid=ffbb8125472946eb8ab21f3843c3ca36&aid=2dedfbcb44964f75bec84325ea7d65af&fid=e0f915710be64176923a68db1e34dd68&clk=' + clickTag;
+    portraitBanner.setAttribute('src', creative_src);
+    portraitBanner.setAttribute('id', yomediaId_ffbb8125472946eb8ab21f3843c3ca36);
+    portraitBanner.setAttribute('allowFullScreen', '');
+    portraitBanner.style.cssText = 'top: 0px; bottom: 0px; left: 0px; right: 0px; margin: auto; display: block; line-height: normal; position: relative; z-index: 100 !important; border: 0; width: 300px !important; height: 600px !important;';
+    var landscapeBanner = document.createElement('iframe');
+    var clickTag = encodeURIComponent(getClickTagYomedia_ffbb8125472946eb8ab21f3843c3ca36());
+    var creative_src = 'http://media_obj.9730a73b.cdnviet.com/2017/banner-testing/3d/index.html?pid=ffbb8125472946eb8ab21f3843c3ca36&aid=2dedfbcb44964f75bec84325ea7d65af&fid=e0f915710be64176923a68db1e34dd68&clk=' + clickTag;
+    landscapeBanner.setAttribute('src', creative_src);
+    landscapeBanner.setAttribute('id', yomediaId_ffbb8125472946eb8ab21f3843c3ca36);
+    landscapeBanner.setAttribute('allowFullScreen', '');
+    landscapeBanner.style.cssText = 'display: block; line-height: normal; position: relative; z-index: 4999 !important; border: 0; width: 300px !important; height: 600px !important;';
+    if (readDeviceOrientation() === 'portrait') {
+        landscapeBanner.style.display = 'none';
+        portraitBanner.style.display = 'block';
+    } else {
+        portraitBanner.style.display = 'none';
+        landscapeBanner.style.display = 'block';
+    }
+    domWrapper.appendChild(portraitBanner);
+    domWrapper.appendChild(landscapeBanner);
+
+    switch (positionInsert_ffbb8125472946eb8ab21f3843c3ca36) {
+        case 'before':
+            mainContain.parentNode.insertBefore(domWrapper, mainContain);
+            break;
+        case 'first_child':
+            var firstChild = mainContain.firstChild;
+            if (firstChild) {
+                mainContain.insertBefore(domWrapper, firstChild);
+            } else {
+                mainContain.appendChild(domWrapper);
+            }
+            break;
+        case 'middle_child':
+            var childNodes = mainContain.childNodes;
+            if ( childNodes.length > 0) {
+                var p = 0;
+                for (var i = 0; i < childNodes.length; i++) {
+                    if (childNodes[i].clientHeight > 0) {
+                        p = p + childNodes[i].clientHeight;
+                    }
+                    if (p >= (mainContain.clientHeight / 2)) {
+                        if (typeof(mainContain.childNodes[i + 1]) != 'undefined') {
+                            var eleToInsert = i + 1;
+                        } else {
+                            var eleToInsert = i;
+                        }            
+                        mainContain.childNodes[eleToInsert].parentNode.insertBefore(domWrapper, mainContain.childNodes[eleToInsert].nextSibling);
+                        break;
+                    }
+                }
+            } else {
+                mainContain.appendChild(domWrapper);
+            }
+            break;
+        case 'last_child':
+            mainContain.appendChild(domWrapper);
+            break;
+        case 'after':
+            var nextNode = mainContain.nextSibling;
+            if (nextNode) {
+                nextNode.parentNode.insertBefore(domWrapper, nextNode);
+            } else {
+                mainContain.parentNode.appendChild(domWrapper);
+            }
+            break;
+        case 'random':
+            var childNodes = mainContain.childNodes;
+            if ( childNodes.length > 0) {
+                var randomIndex= Math.floor(Math.random() * childNodes.length);
+                mainContain.insertBefore(domWrapper, mainContain.childNodes[randomIndex]);
+            } else {
+                mainContain.appendChild(domWrapper);
+            }
+            break;
+        default:
+            document.body.appendChild(domWrapper);
+            break;
+    }
+    rotateYomedia_ffbb8125472946eb8ab21f3843c3ca36();
+    impressionTrackingYomedia_ffbb8125472946eb8ab21f3843c3ca36();
+    if (window!=window.top) {
+        parent.document.addEventListener("touchmove", function(){
+            viewableBannerYomedia_ffbb8125472946eb8ab21f3843c3ca36(document.getElementById(yomediaId_ffbb8125472946eb8ab21f3843c3ca36));
+        }, false);
+        parent.document.addEventListener("scroll", function(){
+            viewableBannerYomedia_ffbb8125472946eb8ab21f3843c3ca36(document.getElementById(yomediaId_ffbb8125472946eb8ab21f3843c3ca36));
+        }, false);
+    }else{
+        document.addEventListener("touchmove", function(){
+            viewableBannerYomedia_ffbb8125472946eb8ab21f3843c3ca36(document.getElementById(yomediaId_ffbb8125472946eb8ab21f3843c3ca36));
+        }, false);
+        document.addEventListener("scroll", function(){
+            viewableBannerYomedia_ffbb8125472946eb8ab21f3843c3ca36(document.getElementById(yomediaId_ffbb8125472946eb8ab21f3843c3ca36));
+        }, false);
+    }
+}
+
+function rotateYomedia_ffbb8125472946eb8ab21f3843c3ca36() {
+    var portraitBanner = document.getElementById(yomediaPortraitId_ffbb8125472946eb8ab21f3843c3ca36);
+    var landscapeBanner = document.getElementById(yomediaLandscapeId_ffbb8125472946eb8ab21f3843c3ca36);
+
+    window.addEventListener("orientationchange", function() {
+        if (readDeviceOrientation() === 'portrait') {
+            landscapeBanner.style.display = 'none';
+            portraitBanner.style.display = 'block';
+        } else {
+            portraitBanner.style.display = 'none';
+            landscapeBanner.style.display = 'block';
+        }
+    });
+}
+
+function readDeviceOrientation() {     
+    if (typeof window.orientation !== 'undefined') {
+        if (Math.abs(window.orientation) === 90) {
+            return 'landscape';
+        } else {
+            return 'portrait';
+        }
+    } else {
+        if(window.innerHeight > window.innerWidth){
+            return 'portrait';
+        } else {
+            return 'landscape';
+        }
+    }
+}
+
+showBannerYomedia_ffbb8125472946eb8ab21f3843c3ca36(1);
+
+function impressionTrackingYomedia_ffbb8125472946eb8ab21f3843c3ca36() {
+    avlHelperModule.embedTracking('http://tracking.yomedia.vn/mobile?evt=impression&pid=ffbb8125472946eb8ab21f3843c3ca36&aid=2dedfbcb44964f75bec84325ea7d65af&r=0&ord=' + Date.now());
+    if (typeof _YoImp != 'undefined' && avlHelperModule.validateUrl(_YoImp)) {
+        avlHelperModule.embedTracking(_YoImp);
+    }
+}
+
+function viewableTrackingYomedia_ffbb8125472946eb8ab21f3843c3ca36() {
+    avlHelperModule.embedTracking('http://tracking.yomedia.vn/mobile?evt=viewable&pid=ffbb8125472946eb8ab21f3843c3ca36&aid=2dedfbcb44964f75bec84325ea7d65af&r=false&ord=1502635859682' + Date.now());
+}
+
+function clickTrackingYomedia_ffbb8125472946eb8ab21f3843c3ca36() {
+    var landingPage = 'http://yomedia.vn'.replace('[timestamp]',Math.floor(Date.now()));
+    avlHelperModule.embedTracking('http://tracking.yomedia.vn/mobile?evt=click&pid=ffbb8125472946eb8ab21f3843c3ca36&aid=2dedfbcb44964f75bec84325ea7d65af&r=0&ord=' + Date.now());
+    if (typeof _YoClick != 'undefined' && avlHelperModule.validateUrl(_YoClick)) {
+        avlHelperModule.embedTracking(_YoClick);
+    }
+    var isMac = /Mac|iPhone|iPod|iPad/.test(navigator.userAgent) && /\sSafari\//.test(navigator.userAgent);
+    if (!isMac) {
+        window.open(landingPage, '_blank');
+    }
+}
+
+function engagementTrackingYomedia_ffbb8125472946eb8ab21f3843c3ca36(event) {
+    if (typeof event !== 'undefined') {
+        var urlTracking = 'http://tracking.yomedia.vn/mobile?evt=[yo_engagement]&pid=ffbb8125472946eb8ab21f3843c3ca36&aid=2dedfbcb44964f75bec84325ea7d65af&r=0&ord=' + Date.now();
+        urlTracking = urlTracking.replace('[yo_engagement]', event);
+        avlHelperModule.embedTracking(urlTracking);
+    }
+}
+
+function getClickTagYomedia_ffbb8125472946eb8ab21f3843c3ca36() {
+    var landingPage = 'http://yomedia.vn'.replace('[timestamp]',Math.floor(Date.now()));
+    return landingPage;
+}
+
+function addAnEventListener_ffbb8125472946eb8ab21f3843c3ca36(obj,evt,func){
+    if ('addEventListener' in obj){
+        obj.addEventListener(evt,func, false);
+    } else if ('attachEvent' in obj){//IE
+        obj.attachEvent('on'+evt,func);
+    }
+}
+
+function iFrameListener_ffbb8125472946eb8ab21f3843c3ca36(event){
+    try {
+        fn_ffbb8125472946eb8ab21f3843c3ca36 = event.data;
+        if ('string' == typeof fn_ffbb8125472946eb8ab21f3843c3ca36 &&  fn_ffbb8125472946eb8ab21f3843c3ca36.toLowerCase().indexOf('yomedia') >= 0 && (fn_ffbb8125472946eb8ab21f3843c3ca36.indexOf('_ffbb8125472946eb8ab21f3843c3ca36();') >= 0) || fn_ffbb8125472946eb8ab21f3843c3ca36.indexOf('TrackingYomedia();') >= 0) {
+            eval(fn_ffbb8125472946eb8ab21f3843c3ca36);
+        }
+    }
+    catch(err) {}
+}
+var fn_ffbb8125472946eb8ab21f3843c3ca36='';
+addAnEventListener_ffbb8125472946eb8ab21f3843c3ca36(window,'message',iFrameListener_ffbb8125472946eb8ab21f3843c3ca36);
+// GA  Analytics
+/*
+avlHelperModule.embedTrackingIframe("GA","{!! getAnalyticUrl() !!}analytics.html?utm_campaign=Yomedia&utm_source={!! urlencode($category_name) !!}&utm_medium={!! $publisher_domain !!}&utm_content={!! urlencode($ad_format) !!}&rd={!! str_random(40) !!}");
+*/
+
+// comScore
+<!-- Begin comScore Tag -->
+var _comscore = _comscore || [];
+_comscore.push({ c1: "8", c2: "18889311" ,c3: "2016090700000000011" });
+(function() {
+var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+el.parentNode.insertBefore(s, el);
+})();
+<!-- End comScore Tag -->
+// comScore
+<!-- Begin comScore Tag -->
+var _comscore = _comscore || [];
+_comscore.push({ c1: "8", c2: "18889311" ,c3: "2016070110000000012" });
+(function() {
+var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+el.parentNode.insertBefore(s, el);
+})();
+<!-- End comScore Tag -->
+// comScore
+<!-- Begin comScore Tag -->
+var _comscore = _comscore || [];
+_comscore.push({ c1: "8", c2: "18889311" ,c3: "2016070110000000006" });
+(function() {
+var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+el.parentNode.insertBefore(s, el);
+})();
+<!-- End comScore Tag -->
+avlHelperModule.embedTracking('http://analytics.yomedia.vn/collect?wid=ad85c58281be4b9682a42a5c9b7dd219&ord=1502635859683' + Date.now());
+avlHelperModule.embedTracking('http://tracking.yomedia.vn/request?evt=req&pid=ffbb8125472946eb8ab21f3843c3ca36&aid=2dedfbcb44964f75bec84325ea7d65af&r=0&ord=' + Date.now());

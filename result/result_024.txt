@@ -1,0 +1,243 @@
+var yomediaId_8a7b618f482f429293c36e1c852c013a = 'yomedia-billboard-itvc-8a7b618f482f429293c36e1c852c013a';
+var positionInsert_8a7b618f482f429293c36e1c852c013a = 'last_child';
+var positionType_8a7b618f482f429293c36e1c852c013a = 'id';
+var positionName_8a7b618f482f429293c36e1c852c013a = 'header';
+var positionIndex_8a7b618f482f429293c36e1c852c013a = '';
+function showBannerYomedia_8a7b618f482f429293c36e1c852c013a(s) {
+    if (document.getElementById(yomediaId_8a7b618f482f429293c36e1c852c013a)) {
+        return false;
+    }
+    var banner = document.createElement('iframe');
+    var clickTag = encodeURIComponent(getClickTagYomedia_8a7b618f482f429293c36e1c852c013a());
+    var creative_src = 'http://media_obj.9730a73b.cdnviet.com/2017/06/sony/billboard-v1/index.html?pid=8a7b618f482f429293c36e1c852c013a&aid=454a228a5e484e8f8d3247d380e93c14&fid=f86fb091b8d54ad28b8ad1cfc8fc29f9&clk=' + clickTag;
+    banner.setAttribute('src', creative_src);
+    banner.setAttribute('id', yomediaId_8a7b618f482f429293c36e1c852c013a);
+    banner.setAttribute('allowFullScreen', '');
+    banner.style.cssText = 'left:0px;right:0px;margin:10px auto;display:block;line-height:normal;overflow:hidden;position:relative;border:0;width:970px !important;height:250px !important;';
+    banner.width = '970';
+    banner.height = '250';
+    var mainContain;
+    if (positionInsert_8a7b618f482f429293c36e1c852c013a === '') {
+        positionInsert_8a7b618f482f429293c36e1c852c013a = 'random';
+    }
+    if (positionType_8a7b618f482f429293c36e1c852c013a === '') {
+        positionType_8a7b618f482f429293c36e1c852c013a = 'id';
+    }
+    if (positionType_8a7b618f482f429293c36e1c852c013a === 'class') {
+        if (positionIndex_8a7b618f482f429293c36e1c852c013a === '') {
+            positionIndex_8a7b618f482f429293c36e1c852c013a = 0;
+        } else {
+            positionIndex_8a7b618f482f429293c36e1c852c013a = parseInt(positionIndex_8a7b618f482f429293c36e1c852c013a);
+        }        
+        mainContain = document.getElementsByClassName(positionName_8a7b618f482f429293c36e1c852c013a)[positionIndex_8a7b618f482f429293c36e1c852c013a];
+    } else {
+        mainContain = document.getElementById(positionName_8a7b618f482f429293c36e1c852c013a);
+    }
+    if (!mainContain) {
+        mainContain = document.body;
+    }
+    switch (positionInsert_8a7b618f482f429293c36e1c852c013a) {
+        case 'before':
+            mainContain.parentNode.insertBefore(banner, mainContain);
+            break;
+        case 'first_child':
+            var firstChild = mainContain.firstChild;
+            if (firstChild) {
+                mainContain.insertBefore(banner, firstChild);
+            } else {
+                mainContain.appendChild(banner);
+            }
+            break;
+        case 'middle_child':
+            var childNodes = mainContain.childNodes;
+            if ( childNodes.length > 0) {
+                var p = 0;
+                for (var i = 0; i < childNodes.length; i++) {
+                    if (childNodes[i].clientHeight > 0) {
+                        p = p + childNodes[i].clientHeight;
+                    }
+                    if (p >= (mainContain.clientHeight / 2)) {
+                        if (typeof(mainContain.childNodes[i + 1]) != 'undefined') {
+                            var eleToInsert = i + 1;
+                        } else {
+                            var eleToInsert = i;
+                        }            
+                        mainContain.childNodes[eleToInsert].parentNode.insertBefore(banner, mainContain.childNodes[eleToInsert].nextSibling);
+                        break;
+                    }
+                }
+            } else {
+                mainContain.appendChild(banner);
+            }
+            break;
+        case 'last_child':
+            mainContain.appendChild(banner);
+            break;
+        case 'after':
+            var nextNode = mainContain.nextSibling;
+            if (nextNode) {
+                nextNode.parentNode.insertBefore(banner, nextNode);
+            } else {
+                mainContain.parentNode.appendChild(banner);
+            }
+            break;
+        case 'random':
+            var childNodes = mainContain.childNodes;
+            if ( childNodes.length > 0) {
+                var randomIndex= Math.floor(Math.random() * childNodes.length);
+                mainContain.insertBefore(banner, mainContain.childNodes[randomIndex]);
+            } else {
+                mainContain.appendChild(banner);
+            }
+            break;
+        default:
+            document.body.appendChild(banner);
+            break;
+    }
+
+    impressionTrackingYomedia_8a7b618f482f429293c36e1c852c013a();
+    if (window!=window.top) {
+        parent.document.addEventListener("scroll", function(){
+            viewableBannerYomedia_8a7b618f482f429293c36e1c852c013a(document.getElementById(yomediaId_8a7b618f482f429293c36e1c852c013a));
+        }, false);
+    }else{
+        document.addEventListener("scroll", function(){
+            viewableBannerYomedia_8a7b618f482f429293c36e1c852c013a(document.getElementById(yomediaId_8a7b618f482f429293c36e1c852c013a));
+        }, false);
+    }
+}
+function closeYoMediaPopupAd_8a7b618f482f429293c36e1c852c013a() {
+    var d = document.getElementById(yomediaId_8a7b618f482f429293c36e1c852c013a);
+    easingYomedia_8a7b618f482f429293c36e1c852c013a(d, 0);
+}
+function easingYomedia_8a7b618f482f429293c36e1c852c013a(e, n) {
+    var pos = e.clientHeight;
+    var change = n - pos;
+    var total = change > 0 ? pos + Math.ceil((change / 2)) : pos + Math.floor((change / 2));
+    e.style.height = total + "px";
+    function r() {
+        easingYomedia_8a7b618f482f429293c36e1c852c013a(e, n);
+    }
+    
+    n = n > 0 ? Math.ceil(n) : Math.floor(n);
+    if(change == 0) {
+        clearTimeout(timer);
+        return;
+    }
+    timer = setTimeout(r, 100);
+}
+showBannerYomedia_8a7b618f482f429293c36e1c852c013a(1);
+function impressionTrackingYomedia_8a7b618f482f429293c36e1c852c013a() {
+    avlHelperModule.embedTracking('http://tracking.yomedia.vn/display?evt=impression&pid=8a7b618f482f429293c36e1c852c013a&aid=454a228a5e484e8f8d3247d380e93c14&r=0&ord=' + Date.now());
+    if (typeof _YoImp != 'undefined' && avlHelperModule.validateUrl(_YoImp)) {
+        avlHelperModule.embedTracking(_YoImp);
+    }
+}
+
+function viewableTrackingYomedia_8a7b618f482f429293c36e1c852c013a() {
+    avlHelperModule.embedTracking('http://tracking.yomedia.vn/display?evt=viewable&pid=8a7b618f482f429293c36e1c852c013a&aid=454a228a5e484e8f8d3247d380e93c14&r=false&ord=1502635256616' + Date.now());
+}
+
+function clickTrackingYomedia_8a7b618f482f429293c36e1c852c013a() {
+    avlHelperModule.embedTracking('http://tracking.yomedia.vn/display?evt=click&pid=8a7b618f482f429293c36e1c852c013a&aid=454a228a5e484e8f8d3247d380e93c14&r=0&ord=' + Date.now());
+    if (typeof _YoClick != 'undefined' && avlHelperModule.validateUrl(_YoClick)) {
+        avlHelperModule.embedTracking(_YoClick);
+    }
+    var landingPage = 'http://yomedia.vn'.replace('[timestamp]',Math.floor(Date.now()));
+    var isMac = /Mac|iPhone|iPod|iPad/.test(navigator.userAgent) && /\sSafari\//.test(navigator.userAgent);
+    var length = landingPage.length;
+    if (!isMac && length > 0) {
+        window.open(landingPage, '_blank');
+    }
+}
+
+function startTrackingYomedia_8a7b618f482f429293c36e1c852c013a(){
+    avlHelperModule.embedTracking('http://tracking.yomedia.vn/display?evt=start&pid=8a7b618f482f429293c36e1c852c013a&aid=454a228a5e484e8f8d3247d380e93c14&r=0&ord=' + Date.now());
+}
+
+function firstQuartileTrackingYomedia_8a7b618f482f429293c36e1c852c013a(){
+    avlHelperModule.embedTracking('http://tracking.yomedia.vn/display?evt=firstQuartile&pid=8a7b618f482f429293c36e1c852c013a&aid=454a228a5e484e8f8d3247d380e93c14&r=0&ord=' + Date.now());
+}
+
+function midpointTrackingYomedia_8a7b618f482f429293c36e1c852c013a(){
+    avlHelperModule.embedTracking('http://tracking.yomedia.vn/display?evt=midpoint&pid=8a7b618f482f429293c36e1c852c013a&aid=454a228a5e484e8f8d3247d380e93c14&r=0&ord=' + Date.now());
+}
+
+function thirdQuartileTrackingYomedia_8a7b618f482f429293c36e1c852c013a(){
+    avlHelperModule.embedTracking('http://tracking.yomedia.vn/display?evt=thirdQuartile&pid=8a7b618f482f429293c36e1c852c013a&aid=454a228a5e484e8f8d3247d380e93c14&r=0&ord=' + Date.now());
+}
+
+function completeTrackingYomedia_8a7b618f482f429293c36e1c852c013a(){
+    avlHelperModule.embedTracking('http://tracking.yomedia.vn/display?evt=complete&pid=8a7b618f482f429293c36e1c852c013a&aid=454a228a5e484e8f8d3247d380e93c14&r=0&ord=' + Date.now());
+}
+
+function engagementTrackingYomedia_8a7b618f482f429293c36e1c852c013a(event) {
+    if (typeof event !== 'undefined') {
+        var urlTracking = 'http://tracking.yomedia.vn/display?evt=[yo_engagement]&pid=8a7b618f482f429293c36e1c852c013a&aid=454a228a5e484e8f8d3247d380e93c14&r=0&ord=' + Date.now();
+        urlTracking = urlTracking.replace('[yo_engagement]', event);
+        avlHelperModule.embedTracking(urlTracking);
+    }
+}
+
+function getClickTagYomedia_8a7b618f482f429293c36e1c852c013a() {
+    var landingPage = 'http://yomedia.vn'.replace('[timestamp]',Math.floor(Date.now()));
+    return landingPage;
+}
+
+function addAnEventListener_8a7b618f482f429293c36e1c852c013a(obj,evt,func){
+    if ('addEventListener' in obj){
+        obj.addEventListener(evt,func, false);
+    } else if ('attachEvent' in obj){//IE
+        obj.attachEvent('on'+evt,func);
+    }
+}
+
+function iFrameListener_8a7b618f482f429293c36e1c852c013a(event){
+    try {
+        fn_8a7b618f482f429293c36e1c852c013a = event.data;
+        if ('string' == typeof fn_8a7b618f482f429293c36e1c852c013a &&  fn_8a7b618f482f429293c36e1c852c013a.toLowerCase().indexOf('yomedia') >= 0 && (fn_8a7b618f482f429293c36e1c852c013a.indexOf('_8a7b618f482f429293c36e1c852c013a();') >= 0) || fn_8a7b618f482f429293c36e1c852c013a.indexOf('TrackingYomedia();') >= 0) {
+            eval(fn_8a7b618f482f429293c36e1c852c013a);
+        }
+    }
+    catch(err) {}
+}
+
+var fn_8a7b618f482f429293c36e1c852c013a='';
+addAnEventListener_8a7b618f482f429293c36e1c852c013a(window,'message',iFrameListener_8a7b618f482f429293c36e1c852c013a);
+// GA  Analytics
+/*
+avlHelperModule.embedTrackingIframe("GA","{!! getAnalyticUrl() !!}analytics.html?utm_campaign=Yomedia&utm_source={!! urlencode($category_name) !!}&utm_medium={!! $publisher_domain !!}&utm_content={!! urlencode($ad_format) !!}&rd={!! str_random(40) !!}");
+*/
+
+// comScore
+<!-- Begin comScore Tag -->
+var _comscore = _comscore || [];
+_comscore.push({ c1: "8", c2: "18889311" ,c3: "2016090700000000011" });
+(function() {
+var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+el.parentNode.insertBefore(s, el);
+})();
+<!-- End comScore Tag -->
+// comScore
+<!-- Begin comScore Tag -->
+var _comscore = _comscore || [];
+_comscore.push({ c1: "8", c2: "18889311" ,c3: "2016070110000000012" });
+(function() {
+var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+el.parentNode.insertBefore(s, el);
+})();
+<!-- End comScore Tag -->
+// comScore
+<!-- Begin comScore Tag -->
+var _comscore = _comscore || [];
+_comscore.push({ c1: "8", c2: "18889311" ,c3: "2016070110000000006" });
+(function() {
+var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+el.parentNode.insertBefore(s, el);
+})();
+<!-- End comScore Tag -->
+avlHelperModule.embedTracking('http://analytics.yomedia.vn/collect?wid=ad85c58281be4b9682a42a5c9b7dd219&ord=1502635256616' + Date.now());
+avlHelperModule.embedTracking('http://tracking.yomedia.vn/request?evt=req&pid=8a7b618f482f429293c36e1c852c013a&aid=454a228a5e484e8f8d3247d380e93c14&r=0&ord=' + Date.now());

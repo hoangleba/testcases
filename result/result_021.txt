@@ -1,0 +1,292 @@
+var yomediaBasicId_aff35e3ae4414d4a8b9f2e11e3283f83 = 'yomedia-basic-side-kick-aff35e3ae4414d4a8b9f2e11e3283f83';
+var yomediaExpandId_aff35e3ae4414d4a8b9f2e11e3283f83 = 'yomedia-expand-side-kick-aff35e3ae4414d4a8b9f2e11e3283f83';
+var positionType_aff35e3ae4414d4a8b9f2e11e3283f83 = '';
+var positionName_aff35e3ae4414d4a8b9f2e11e3283f83 = '';
+var positionIndex_aff35e3ae4414d4a8b9f2e11e3283f83 = '';
+String.prototype.VwIx=function(s){return this.toLowerCase().indexOf(s.toLowerCase())}
+String.prototype.VwHas=function(){for(var i=0; i<arguments.length; i++)if(this.VwIx(arguments[i])>-1) return true; return false;}
+window.VwAg=navigator.userAgent.toLowerCase();
+window.VwDopr=VwAg.VwHas("opera");
+window.VwDIE=VwAg.VwHas("msie")&&!VwDopr;
+window.VwIE9=VwAg.VwHas("msie 9");
+window.VwAnimateStartTime;
+window.VwAnimateTime = 2000;
+window.VwAnimateInterval=null;
+window.VwDistanceToScroll=0;
+
+
+String.prototype.VwIx=function(s){return this.toLowerCase().indexOf(s.toLowerCase())}
+String.prototype.VwHas=function(){for(var i=0;i<arguments.length;i++)if(this.VwIx(arguments[i])>-1)return true;return false;}
+
+window.VwAg=navigator.userAgent.toLowerCase();
+window.VwDopr=VwAg.VwHas("opera");
+window.VwDIE=VwAg.VwHas("msie")&&!VwDopr;
+window.VwIE9=VwAg.VwHas("msie 9");
+window.VwAnimateStartTime;
+window.VwAnimateTime = 2000;
+window.VwAnimateInterval=null;
+window.VwDistanceToScroll=0;
+
+function showBannerYomedia_aff35e3ae4414d4a8b9f2e11e3283f83(s) {
+    if (document.getElementById(yomediaBasicId_aff35e3ae4414d4a8b9f2e11e3283f83) || document.getElementById(yomediaExpandId_aff35e3ae4414d4a8b9f2e11e3283f83)) {
+        return false;
+    }
+    var basicBanner = document.createElement('iframe');
+    var clickTag = encodeURIComponent(getClickTagYomedia_aff35e3ae4414d4a8b9f2e11e3283f83());
+    var creative_src = 'http://media_obj.9730a73b.cdnviet.com/2017/banner-testing/sidekick/index.html?pid=aff35e3ae4414d4a8b9f2e11e3283f83&aid=556a5f6ecd4044638d2a42c2a6b2f20a&fid=83e03203413f4b07b3248ca394bd6a17&clk=' + clickTag;
+    basicBanner.setAttribute('src', creative_src);
+    basicBanner.setAttribute('id', yomediaBasicId_aff35e3ae4414d4a8b9f2e11e3283f83);
+    basicBanner.setAttribute('allowFullScreen', '');
+    basicBanner.style.cssText = 'right: 0px; bottom: 0px; display: block; line-height: normal; overflow: hidden; position: fixed; z-index: 1999999 !important; border: 0; width: 300px !important; height: 250px !important;';
+    basicBanner.width = '300';
+    basicBanner.height = '250';
+    document.body.appendChild(basicBanner);
+
+    var iframeBigBanner = document.createElement('iframe');
+    creative_src = 'http://media_obj.9730a73b.cdnviet.com/2017/banner-testing/sidekick/850x700.html?pid=aff35e3ae4414d4a8b9f2e11e3283f83&aid=556a5f6ecd4044638d2a42c2a6b2f20a&fid=83e03203413f4b07b3248ca394bd6a17&clk=' + clickTag;
+    iframeBigBanner.setAttribute('src', creative_src);
+    iframeBigBanner.setAttribute('id', yomediaExpandId_aff35e3ae4414d4a8b9f2e11e3283f83);
+    iframeBigBanner.setAttribute('allowFullScreen', '');
+    var mainContain;
+    if (positionName_aff35e3ae4414d4a8b9f2e11e3283f83 !== '') {
+        if (positionType_aff35e3ae4414d4a8b9f2e11e3283f83 === '') {
+            positionType_aff35e3ae4414d4a8b9f2e11e3283f83 = 'id';
+        }
+        if (positionType_aff35e3ae4414d4a8b9f2e11e3283f83 === 'class') {
+            if (positionIndex_aff35e3ae4414d4a8b9f2e11e3283f83 === '') {
+                positionIndex_aff35e3ae4414d4a8b9f2e11e3283f83 = 0;
+            } else {
+                positionIndex_aff35e3ae4414d4a8b9f2e11e3283f83 = parseInt(positionIndex_aff35e3ae4414d4a8b9f2e11e3283f83);
+            }  
+            mainContain = document.getElementsByClassName(positionName_aff35e3ae4414d4a8b9f2e11e3283f83)[positionIndex_aff35e3ae4414d4a8b9f2e11e3283f83];      
+        } else {
+            mainContain = document.getElementById(positionName_aff35e3ae4414d4a8b9f2e11e3283f83);
+        }
+    } else {
+        mainContain = document.body;
+    }
+    if (!mainContain) {
+        mainContain = document.body;
+    }
+    
+    var screenWidth = (document.body.offsetWidth - mainContain.offsetWidth) / 2 + mainContain.offsetWidth;
+    iframeBigBanner.style.cssText = 'right: 0px; bottom: 0px; display: none; line-height: normal; overflow: visable; position: absolute; z-index: 1999999 !important; border:0; width: 850px !important; height: 700px !important; left: '+screenWidth+'px; top: 0px;';
+    iframeBigBanner.width = '850';
+    iframeBigBanner.height = '700';
+    document.body.appendChild(iframeBigBanner);
+    impressionTrackingYomedia_aff35e3ae4414d4a8b9f2e11e3283f83();
+}
+function minYoMediaPopupAd_aff35e3ae4414d4a8b9f2e11e3283f83() {
+    var sPos = 'right-bottom';
+    if (document.getElementById(yomediaExpandId_aff35e3ae4414d4a8b9f2e11e3283f83).style.display != "block") {
+        avlInteractModule.rectAd(yomediaBasicId_aff35e3ae4414d4a8b9f2e11e3283f83, 'top-down', sPos, 'min', parseInt('300'), parseInt('250'), parseInt('300'), parseInt('250'), parseInt('50'));
+    } else {
+        sendMessageToIframe_aff35e3ae4414d4a8b9f2e11e3283f83(yomediaBasicId_aff35e3ae4414d4a8b9f2e11e3283f83, 'yomediaReloadAds();');
+    }
+    closeYoMediaExpand_aff35e3ae4414d4a8b9f2e11e3283f83();
+}
+function restoreYoMediaPopupAd_aff35e3ae4414d4a8b9f2e11e3283f83() {
+    var sPos = 'right-bottom';
+   avlInteractModule.rectAd(yomediaBasicId_aff35e3ae4414d4a8b9f2e11e3283f83, 'top-down', sPos, 'max', parseInt('300'), parseInt('250'), parseInt('300'), parseInt('300'), parseInt('50'));
+}
+function setYoMediaExpand_aff35e3ae4414d4a8b9f2e11e3283f83() {
+    document.body.style.overflow = 'hidden';
+    document.getElementById(yomediaExpandId_aff35e3ae4414d4a8b9f2e11e3283f83).style.top = document.body.scrollTop + 'px';
+    document.getElementById(yomediaExpandId_aff35e3ae4414d4a8b9f2e11e3283f83).style.display = "block";
+    document.getElementById(yomediaBasicId_aff35e3ae4414d4a8b9f2e11e3283f83).style.display = "none";
+    animateExpand_aff35e3ae4414d4a8b9f2e11e3283f83();
+}
+function setYoMediaPre_aff35e3ae4414d4a8b9f2e11e3283f83() {
+    var sPos = 'right-bottom';
+    avlInteractModule.rectExpand(yomediaBasicId_aff35e3ae4414d4a8b9f2e11e3283f83, 'pre', sPos, parseInt('300'), parseInt('250'), parseInt('300'), parseInt('250'));
+}
+function closeYoMediaPopupAd_aff35e3ae4414d4a8b9f2e11e3283f83() {
+    avlInteractModule.closeAd(yomediaBasicId_aff35e3ae4414d4a8b9f2e11e3283f83, parseInt('900000'), yomediaBasicId_aff35e3ae4414d4a8b9f2e11e3283f83);
+    avlInteractModule.closeAd(yomediaBasicId_aff35e3ae4414d4a8b9f2e11e3283f83, parseInt('900000'), yomediaExpandId_aff35e3ae4414d4a8b9f2e11e3283f83);
+}
+
+function closeYoMediaExpand_aff35e3ae4414d4a8b9f2e11e3283f83() {
+    window.VwAnimateStartTime=new Date();
+    clearInterval(VwAnimateInterval);
+    window.VwAnimateInterval = setInterval("reshowYoMediaExpand_aff35e3ae4414d4a8b9f2e11e3283f83();", 15);
+    reshowYoMediaExpand_aff35e3ae4414d4a8b9f2e11e3283f83();
+}
+
+function sendMessageToIframe_aff35e3ae4414d4a8b9f2e11e3283f83(to, $message) {
+    var iframe_banner = document.getElementById(to);
+    iframe_banner.contentWindow.postMessage($message, '*'); 
+}
+
+function animateExpand_aff35e3ae4414d4a8b9f2e11e3283f83(){
+    //acount for scrollbar size on ie9 browsers
+    if(VwIE9)document.documentElement.scrollLeft+=16;
+
+    //get the current time and use this as the animation start time
+    window.VwAnimateStartTime=new Date();
+
+    //clear any current intervals related to animating
+    clearInterval(window.VwAnimateInterval);
+
+    //start expand animation
+    window.VwAnimateInterval = setInterval("scrollToRight_aff35e3ae4414d4a8b9f2e11e3283f83();", 5);
+    scrollToRight_aff35e3ae4414d4a8b9f2e11e3283f83();
+}
+
+//easing
+function easing_aff35e3ae4414d4a8b9f2e11e3283f83(t, b, c, d){
+    t = t/(d/2);
+    if (t < 1) return c/2*t*t + b;
+    t--;
+    return -c/2 * (t*(t-2) - 1) + b;
+}
+
+//get current Y scrollbar location
+function getScrollXY_aff35e3ae4414d4a8b9f2e11e3283f83() {
+    var scrOfX = 0, scrOfY = 0;
+    if( typeof( window.pageYOffset ) == 'number' ) {
+        //Netscape compliant
+        scrOfY = window.pageYOffset;
+        scrOfX = window.pageXOffset;
+    } else if( document.body && ( document.body.scrollLeft || document.body.scrollTop ) ) {
+        //DOM compliant
+        scrOfY = document.body.scrollTop;
+        scrOfX = document.body.scrollLeft;
+    } else if( document.documentElement && ( document.documentElement.scrollLeft || document.documentElement.scrollTop ) ) {
+        //IE6 standards compliant mode
+        scrOfY = document.documentElement.scrollTop;
+        scrOfX = document.documentElement.scrollLeft;
+    }
+    return scrOfY;
+}
+
+//this function is called by animateExpand_aff35e3ae4414d4a8b9f2e11e3283f83() to start expand easing animation
+function scrollToRight_aff35e3ae4414d4a8b9f2e11e3283f83(){
+    try{
+        var VwCurrentTime = new Date();
+        var VwTimePassed = VwCurrentTime.getTime() - window.VwAnimateStartTime.getTime();
+        window.VwDistanceToScroll = document.body.scrollWidth;
+
+        //the animation will continue to ease until the specified animation time.
+        if(VwTimePassed< window.VwAnimateTime){
+            var VwScrollAmount = easing_aff35e3ae4414d4a8b9f2e11e3283f83(VwTimePassed, 0,window.VwDistanceToScroll, window.VwAnimateTime);
+            window.scrollTo(VwScrollAmount,getScrollXY_aff35e3ae4414d4a8b9f2e11e3283f83());
+        }else{
+            //once the animation completes, clear all animation intervals
+            clearInterval(window.VwAnimateInterval);
+
+        }
+    }catch(e) {}
+}
+
+function reshowYoMediaExpand_aff35e3ae4414d4a8b9f2e11e3283f83() {
+    try{
+        var VwCurrentTime = new Date();
+        var VwTimePassed = VwCurrentTime.getTime() - window.VwAnimateStartTime.getTime();
+        window.VwDistanceToScroll = document.body.scrollWidth;
+
+        if(VwTimePassed< window.VwAnimateTime){
+            var VwScrollAmount = easing_aff35e3ae4414d4a8b9f2e11e3283f83(VwTimePassed, 0,window.VwDistanceToScroll, window.VwAnimateTime);
+            window.scrollTo(window.VwDistanceToScroll-VwScrollAmount+10,getScrollXY_aff35e3ae4414d4a8b9f2e11e3283f83());
+        }else{
+            clearInterval(window.VwAnimateInterval);
+            window.scrollTo(0,getScrollXY_aff35e3ae4414d4a8b9f2e11e3283f83());
+            document.getElementById(yomediaExpandId_aff35e3ae4414d4a8b9f2e11e3283f83).style.display = "none";
+            document.getElementById(yomediaBasicId_aff35e3ae4414d4a8b9f2e11e3283f83).style.display = "block";
+            document.body.style.overflow = "auto";
+        }
+    }catch(e) {}
+}
+
+showBannerYomedia_aff35e3ae4414d4a8b9f2e11e3283f83(1);
+
+function impressionTrackingYomedia_aff35e3ae4414d4a8b9f2e11e3283f83() {
+    avlHelperModule.embedTracking('http://tracking.yomedia.vn/display?evt=impression&pid=aff35e3ae4414d4a8b9f2e11e3283f83&aid=556a5f6ecd4044638d2a42c2a6b2f20a&r=0&ord=' + Date.now());
+    if (typeof _YoImp != 'undefined' && avlHelperModule.validateUrl(_YoImp)) {
+        avlHelperModule.embedTracking(_YoImp);
+    }
+}
+
+function viewableTrackingYomedia_aff35e3ae4414d4a8b9f2e11e3283f83() {
+    avlHelperModule.embedTracking('http://tracking.yomedia.vn/display?evt=viewable&pid=aff35e3ae4414d4a8b9f2e11e3283f83&aid=556a5f6ecd4044638d2a42c2a6b2f20a&r=false&ord=1502533835607' + Date.now());
+}
+
+function clickTrackingYomedia_aff35e3ae4414d4a8b9f2e11e3283f83() {
+    avlHelperModule.embedTracking('http://tracking.yomedia.vn/display?evt=click&pid=aff35e3ae4414d4a8b9f2e11e3283f83&aid=556a5f6ecd4044638d2a42c2a6b2f20a&r=0&ord=' + Date.now());
+    if (typeof _YoClick != 'undefined' && avlHelperModule.validateUrl(_YoClick)) {
+        avlHelperModule.embedTracking(_YoClick);
+    }
+    var landingPage = 'http://yomedia.vn'.replace('[timestamp]',Math.floor(Date.now()));
+    var isMac = /Mac|iPhone|iPod|iPad/.test(navigator.userAgent) && /\sSafari\//.test(navigator.userAgent);
+    if (!isMac) {
+        window.open(landingPage, '_blank');
+    }
+}
+
+function engagementTrackingYomedia_aff35e3ae4414d4a8b9f2e11e3283f83(event) {
+    if (typeof event !== 'undefined') {
+        var urlTracking = 'http://tracking.yomedia.vn/display?evt=[yo_engagement]&pid=aff35e3ae4414d4a8b9f2e11e3283f83&aid=556a5f6ecd4044638d2a42c2a6b2f20a&r=0&ord=' + Date.now();
+        urlTracking = urlTracking.replace('[yo_engagement]', event);
+        avlHelperModule.embedTracking(urlTracking);
+    }
+}
+
+function getClickTagYomedia_aff35e3ae4414d4a8b9f2e11e3283f83() {
+    var landingPage = 'http://yomedia.vn'.replace('[timestamp]',Math.floor(Date.now()));
+    return landingPage;
+}
+function addAnEventListener_aff35e3ae4414d4a8b9f2e11e3283f83(obj,evt,func){
+    if ('addEventListener' in obj){
+        obj.addEventListener(evt,func, false);
+    } else if ('attachEvent' in obj){//IE
+        obj.attachEvent('on'+evt,func);
+    }
+}
+
+function iFrameListener_aff35e3ae4414d4a8b9f2e11e3283f83(event){
+    try {
+        fn_aff35e3ae4414d4a8b9f2e11e3283f83 = event.data;
+        if ('string' == typeof fn_aff35e3ae4414d4a8b9f2e11e3283f83 &&  fn_aff35e3ae4414d4a8b9f2e11e3283f83.toLowerCase().indexOf('yomedia') >= 0 && (fn_aff35e3ae4414d4a8b9f2e11e3283f83.indexOf('_aff35e3ae4414d4a8b9f2e11e3283f83();') >= 0) || fn_aff35e3ae4414d4a8b9f2e11e3283f83.indexOf('TrackingYomedia();') >= 0) {
+            eval(fn_aff35e3ae4414d4a8b9f2e11e3283f83);
+        }
+    }
+    catch(err) {}
+}
+var fn_aff35e3ae4414d4a8b9f2e11e3283f83='';
+addAnEventListener_aff35e3ae4414d4a8b9f2e11e3283f83(window,'message',iFrameListener_aff35e3ae4414d4a8b9f2e11e3283f83);
+// GA  Analytics
+/*
+avlHelperModule.embedTrackingIframe("GA","{!! getAnalyticUrl() !!}analytics.html?utm_campaign=Yomedia&utm_source={!! urlencode($category_name) !!}&utm_medium={!! $publisher_domain !!}&utm_content={!! urlencode($ad_format) !!}&rd={!! str_random(40) !!}");
+*/
+
+// comScore
+<!-- Begin comScore Tag -->
+var _comscore = _comscore || [];
+_comscore.push({ c1: "8", c2: "18889311" ,c3: "2016090700000000011" });
+(function() {
+var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+el.parentNode.insertBefore(s, el);
+})();
+<!-- End comScore Tag -->
+// comScore
+<!-- Begin comScore Tag -->
+var _comscore = _comscore || [];
+_comscore.push({ c1: "8", c2: "18889311" ,c3: "2016070110000000012" });
+(function() {
+var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+el.parentNode.insertBefore(s, el);
+})();
+<!-- End comScore Tag -->
+// comScore
+<!-- Begin comScore Tag -->
+var _comscore = _comscore || [];
+_comscore.push({ c1: "8", c2: "18889311" ,c3: "2016070110000000006" });
+(function() {
+var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+el.parentNode.insertBefore(s, el);
+})();
+<!-- End comScore Tag -->
+avlHelperModule.embedTracking('http://analytics.yomedia.vn/collect?wid=ad85c58281be4b9682a42a5c9b7dd219&ord=1502533835607' + Date.now());
+avlHelperModule.embedTracking('http://tracking.yomedia.vn/request?evt=req&pid=aff35e3ae4414d4a8b9f2e11e3283f83&aid=556a5f6ecd4044638d2a42c2a6b2f20a&r=0&ord=' + Date.now());

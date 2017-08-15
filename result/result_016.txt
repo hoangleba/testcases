@@ -1,0 +1,118 @@
+var yomediaId_8c8ce24010684969ae0e053ccdae5d6d = 'yomedia-inpage-8c8ce24010684969ae0e053ccdae5d6d';
+function showBannerYomedia_8c8ce24010684969ae0e053ccdae5d6d(s) {
+    if (document.getElementById(yomediaId_8c8ce24010684969ae0e053ccdae5d6d)) {
+        return false;
+    }
+    var iframe_banner = document.createElement('iframe');
+    var clickTag = encodeURIComponent(getClickTagYomedia_8c8ce24010684969ae0e053ccdae5d6d());
+    var creative_src = 'http://media_obj.9730a73b.cdnviet.com/2017/06/ultherapy/balloon-standard-op1/index.html?pid=8c8ce24010684969ae0e053ccdae5d6d&aid=6fd4b959c7af484d87128af62209139b&fid=8d0436d3790141a48c68af35adea8295&clk=' + clickTag;
+    iframe_banner.setAttribute('src', creative_src);
+    iframe_banner.setAttribute('id', yomediaId_8c8ce24010684969ae0e053ccdae5d6d);
+    iframe_banner.setAttribute('allowFullScreen', '');
+    iframe_banner.style.cssText = 'right:0px;left:0px;margin-right:auto;margin-left:auto;display:block;line-height:normal;overflow:hidden;z-index:4999 !important;border:0;width:300px !important;height:250px !important;';
+    iframe_banner.width = '300';
+    iframe_banner.height = '250';
+    document.write(iframe_banner.outerHTML);
+    if (window!=window.top) {
+        parent.document.addEventListener("scroll", function(){
+            viewableBannerYomedia_8c8ce24010684969ae0e053ccdae5d6d(document.getElementById(yomediaId_8c8ce24010684969ae0e053ccdae5d6d));
+        }, false);
+    }else{
+        document.addEventListener("scroll", function(){
+            viewableBannerYomedia_8c8ce24010684969ae0e053ccdae5d6d(document.getElementById(yomediaId_8c8ce24010684969ae0e053ccdae5d6d));
+        }, false);
+    }
+    impressionTrackingYomedia_8c8ce24010684969ae0e053ccdae5d6d();
+}
+showBannerYomedia_8c8ce24010684969ae0e053ccdae5d6d(1);
+function impressionTrackingYomedia_8c8ce24010684969ae0e053ccdae5d6d() {
+    avlHelperModule.embedTracking('http://tracking.yomedia.vn/display?evt=impression&pid=8c8ce24010684969ae0e053ccdae5d6d&aid=6fd4b959c7af484d87128af62209139b&r=0&ord=' + Date.now());
+    if (typeof _YoImp != 'undefined' && avlHelperModule.validateUrl(_YoImp)) {
+        avlHelperModule.embedTracking(_YoImp);
+    }
+}
+
+function viewableTrackingYomedia_8c8ce24010684969ae0e053ccdae5d6d() {
+    avlHelperModule.embedTracking('http://tracking.yomedia.vn/display?evt=viewable&pid=8c8ce24010684969ae0e053ccdae5d6d&aid=6fd4b959c7af484d87128af62209139b&r=false&ord=1502599199719' + Date.now());
+}
+
+function clickTrackingYomedia_8c8ce24010684969ae0e053ccdae5d6d() {
+    avlHelperModule.embedTracking('http://tracking.yomedia.vn/display?evt=click&pid=8c8ce24010684969ae0e053ccdae5d6d&aid=6fd4b959c7af484d87128af62209139b&r=0&ord=' + Date.now());
+    if (typeof _YoClick != 'undefined' && avlHelperModule.validateUrl(_YoClick)) {
+        avlHelperModule.embedTracking(_YoClick);
+    }
+    var landingPage = 'http://yomedia.vn'.replace('[timestamp]',Math.floor(Date.now()));
+    var isMac = /Mac|iPhone|iPod|iPad/.test(navigator.userAgent) && /\sSafari\//.test(navigator.userAgent);
+    if (!isMac) {
+        window.open(landingPage, '_blank');
+    }
+}
+
+function engagementTrackingYomedia_8c8ce24010684969ae0e053ccdae5d6d(event) {
+    if (typeof event !== 'undefined') {
+        var urlTracking = 'http://tracking.yomedia.vn/display?evt=[yo_engagement]&pid=8c8ce24010684969ae0e053ccdae5d6d&aid=6fd4b959c7af484d87128af62209139b&r=0&ord=' + Date.now();
+        urlTracking = urlTracking.replace('[yo_engagement]', event);
+        avlHelperModule.embedTracking(urlTracking);
+    }
+}
+
+function getClickTagYomedia_8c8ce24010684969ae0e053ccdae5d6d() {
+    var landingPage = 'http://yomedia.vn'.replace('[timestamp]',Math.floor(Date.now()));
+    return landingPage;
+}
+function addAnEventListener_8c8ce24010684969ae0e053ccdae5d6d(obj,evt,func){
+    if ('addEventListener' in obj){
+        obj.addEventListener(evt,func, false);
+    } else if ('attachEvent' in obj){//IE
+        obj.attachEvent('on'+evt,func);
+    }
+}
+
+function iFrameListener_8c8ce24010684969ae0e053ccdae5d6d(event){
+    try {
+        fn_8c8ce24010684969ae0e053ccdae5d6d = event.data;
+        if ('string' == typeof fn_8c8ce24010684969ae0e053ccdae5d6d &&  fn_8c8ce24010684969ae0e053ccdae5d6d.toLowerCase().indexOf('yomedia') >= 0 && (fn_8c8ce24010684969ae0e053ccdae5d6d.indexOf('_8c8ce24010684969ae0e053ccdae5d6d();') >= 0) || fn_8c8ce24010684969ae0e053ccdae5d6d.indexOf('TrackingYomedia();') >= 0) {
+            eval(fn_8c8ce24010684969ae0e053ccdae5d6d);
+        }
+    }
+    catch(err) {}
+}
+var fn_8c8ce24010684969ae0e053ccdae5d6d='';
+addAnEventListener_8c8ce24010684969ae0e053ccdae5d6d(window,'message',iFrameListener_8c8ce24010684969ae0e053ccdae5d6d);
+// GA  Analytics
+/*
+avlHelperModule.embedTrackingIframe("GA","{!! getAnalyticUrl() !!}analytics.html?utm_campaign=Yomedia&utm_source={!! urlencode($category_name) !!}&utm_medium={!! $publisher_domain !!}&utm_content={!! urlencode($ad_format) !!}&rd={!! str_random(40) !!}");
+*/
+
+// comScore
+<!-- Begin comScore Tag -->
+var _comscore = _comscore || [];
+_comscore.push({ c1: "8", c2: "18889311" ,c3: "2016090700000000011" });
+(function() {
+var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+el.parentNode.insertBefore(s, el);
+})();
+<!-- End comScore Tag -->
+// comScore
+<!-- Begin comScore Tag -->
+var _comscore = _comscore || [];
+_comscore.push({ c1: "8", c2: "18889311" ,c3: "2016070110000000012" });
+(function() {
+var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+el.parentNode.insertBefore(s, el);
+})();
+<!-- End comScore Tag -->
+// comScore
+<!-- Begin comScore Tag -->
+var _comscore = _comscore || [];
+_comscore.push({ c1: "8", c2: "18889311" ,c3: "2016070110000000006" });
+(function() {
+var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+el.parentNode.insertBefore(s, el);
+})();
+<!-- End comScore Tag -->
+avlHelperModule.embedTracking('http://analytics.yomedia.vn/collect?wid=ad85c58281be4b9682a42a5c9b7dd219&ord=1502599199719' + Date.now());
+avlHelperModule.embedTracking('http://tracking.yomedia.vn/request?evt=req&pid=8c8ce24010684969ae0e053ccdae5d6d&aid=6fd4b959c7af484d87128af62209139b&r=0&ord=' + Date.now());
